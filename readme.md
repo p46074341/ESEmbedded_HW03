@@ -49,8 +49,23 @@ This is the hw03 sample. Please follow the steps below.
 
 --------------------
 
-- [x] **If you volunteer to give the presentation next week, check this.**
+- [8=D] **If you volunteer to give the presentation next week, check this.**
 
 --------------------
 
 **★★★ Please take your note here ★★★**
+
+我修改了main.c的code，加入兩個function,其中function1c0函式傳遞四個int型態的值(a,b,c,d)並回傳(a+b+c-d)，而caller1函式則是無傳遞值但回傳function1(1,2,3,4)，如下圖
+
+![image1](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/1.png)
+	
+接下來利用qemu觀察函數傳遞與回傳的過程
+
+#function1
+1. 利用movs指令在r0,r1,r2,r3分別填入四個傳遞值1,2,3,4
+2. 利用str指令將r0的值寫入r7 offset #12的位置,r1寫入r7 offset #8的位置,r0寫入r7 offset #4的位置,r3寫入r7 (如圖步驟0x22~0x28)
+3. 步驟二的值依序為傳遞值的a,b,c,d，函式需要回傳a+b+c-d的值，先計算a+b的部分，將a,b利用ldr指令從位置r7 offset #12、r7 offset #8載入r2、r3，接著用add指令將r3加到r2完成a+b的計算重複以上步驟其中減的部分將指令從add換成subs
+![image1](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/2.png)
+
+#caller1
+
