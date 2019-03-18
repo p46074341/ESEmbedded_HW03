@@ -66,7 +66,7 @@ This is the hw03 sample. Please follow the steps below.
 ![image2](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/2.png)
 3. 步驟二的值依序為傳遞值的a、b、c、d，函式需要回傳a+b+c-d的值，先計算a+b的部分，將a和b利用ldr指令從位置r7 offset #12、r7 offset #8載入r2、r3，接著用add指令將r3加到r2完成a+b的計算重複以上步驟其中減的部分將指令從add換成subs
 4. 最後將答案利用movs指令傳至r0
-![image3](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/.png)
+![image3](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/3.png)
 
 #caller1
 1. 因為caller1函式回傳值為function1(4, 3, 2, 1),因此一樣用movs指令分別在r0、r1、r2、r3填入4、3、2、1
