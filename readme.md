@@ -55,11 +55,10 @@ This is the hw03 sample. Please follow the steps below.
 
 **★★★ Please take your note here ★★★**
 
-我修改了main.c的code，加入兩個function,其中function1c0函式傳遞四個int型態的值(a, b, c, d)並回傳(a+b+c-d)，而caller1函式則是無傳遞值但回傳function1(4, 3, 2, 1)，如下圖
-
+修改main.c的內容，在while迴圈裡加入兩個function,其中function1c0函式傳遞四個int型態的值(a, b, c, d)並回傳(a+b+c-d)，而caller1函式則是無傳遞值但回傳function1(4, 3, 2, 1)，如下圖
 ![image1](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/1.png)
 	
-接下來利用qemu觀察函數傳遞與回傳的過程
+利用qemu觀察函數傳遞與回傳的過程
 
 #function1
 1. 利用movs指令在r0、r1、r2、r3分別填入四個傳遞值1、2、3、4
@@ -70,6 +69,7 @@ This is the hw03 sample. Please follow the steps below.
 ![image3](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/2.png)
 
 #caller1
-1. 因為caller1函式回傳值為function1(4, 3, 2, 1),因此一樣用movs指令分別在r0、r1、r2、r3填入4、3、2、1,接著會透過bx指令跳到0x20重複之前function1的步驟的2、3部分完成計算
-2. 將答案利用movs指令傳至r0
+1. 因為caller1函式回傳值為function1(4, 3, 2, 1),因此一樣用movs指令分別在r0、r1、r2、r3填入4、3、2、1
+2. 透過bl指令跳到0x20重複之前function1的步驟的2、3部分完成計算
+3. 將答案利用movs指令傳至r0
 ![image4](https://github.com/p46074341/ESEmbedded_HW03/blob/master/picture/4.png)
